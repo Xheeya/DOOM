@@ -7930,7 +7930,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 07d9bacae262d01459a8e252708dbf9e, type: 3}
     m_FontSize: 90
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 6
     m_MaxSize: 90
     m_Alignment: 7
@@ -9096,6 +9096,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   gunPosition: {fileID: 824740842}
+  inputManager: {fileID: 2071179930}
+  ammoText: {fileID: 1610819240}
   onGunGrabbed:
     m_PersistentCalls:
       m_Calls:
@@ -9705,6 +9707,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2071179929}
+  - component: {fileID: 2071179930}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -9727,6 +9730,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2071179930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071179928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88922ff4d5318f346b42f89c9b4239bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputManager
 --- !u!1 &2086228384 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 814726509189036086, guid: 2caae08c46d89154ab2bb30dd5587d0c, type: 3}
@@ -10046,9 +10061,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 203844589}
-  - {fileID: 20983775}
   - {fileID: 971679892}
   - {fileID: 622935247}
+  - {fileID: 20983775}
   - {fileID: 340101860}
   - {fileID: 824740841}
   - {fileID: 1359638617}
