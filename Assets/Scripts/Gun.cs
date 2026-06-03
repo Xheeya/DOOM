@@ -40,6 +40,7 @@ ChargeGun(false);
 public void ChargeGun(bool playAnimation = true)
     {
         if (totalBullets <= 0 || cartridgeBullets == gunData.cartridgeSize) return;
+        SoundManager.instance.Play(gunData.reloadSoundName);
         cartridgeBullets = Mathf.Min(gunData.cartridgeSize, totalBullets);
         totalBullets -= cartridgeBullets;
         if (playAnimation) animator.Play("Charge", 0, 0f);
@@ -66,6 +67,7 @@ public void Shoot()
         bulletPivot.forward = direction;
         GameObject bullet = Instantiate(bulletPrefab, bulletPivot.position, bulletPivot.rotation);
         bullet.transform.LookAt(targetPoint);
+        SoundManager.instance.Play(gunData.shootSoundName);
         animator.Play("Shoot", 0, 0f);
     }
     public void HandleFire(bool pressed, bool held)
