@@ -50,7 +50,14 @@ public void ChargeGun(bool playAnimation = true)
     {
         ammoText.text = $"{cartridgeBullets} / {totalBullets}";
     }
-public void Shoot()
+    private void DamageEnemy(GameObject enemy)
+    {
+        if (enemy.CompareTag("Enemy"))
+        {
+            enemy.GetComponent<Health>().TakeDamage(gunData.damage);
+        }
+    }
+    public void Shoot()
     {
         float rayDistance = 1000f;
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -58,6 +65,7 @@ public void Shoot()
         if (Physics.Raycast(ray, out RaycastHit hit, rayDistance))
         {
             targetPoint = hit.point;
+            DamageEnemy(hit.collider.gameObject);
         }
         else
         {
