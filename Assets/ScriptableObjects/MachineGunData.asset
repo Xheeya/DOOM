@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0edf94c27fa35d64198d91085dff6724, type: 3}
-  m_Name: GunData
+  m_Name: MachineGunData
   m_EditorClassIdentifier: Assembly-CSharp::GunData
   damage: 10
   fireRate: 20
   totalBullets: 80
   reloadTime: 2
   cartridgeSize: 10
-  gunType: 1
+  gunType: 0
   shootSoundName: Shoot
   reloadSoundName: Reload
   dropSoundName: Drop

@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other) 
     {
-        if (other.CompareTag("Gun"))
+        if (other.CompareTag("Gun") && currentGun == null)
         {
             currentGun = other.GetComponent<Gun>();
             currentGun.GrabGun(gunPosition, ammoText);
