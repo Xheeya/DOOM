@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
+using UnityEngine.Events; 
 
 public class Gun: MonoBehaviour
 {
-    [SerializeField]
+[SerializeField]
 private Animator animator;
 [SerializeField]
 private Rotate rotateScript;
@@ -17,18 +17,18 @@ private GameObject bulletPrefab;
 private Text ammoText;
 private float nextFireTime;
 private int totalBullets;
-private int cartridgeBullets;
+private int cartrigeBullets;
 private UnityEvent onGunEmpty = new UnityEvent();
 public UnityEvent OnGunEmpty
     {
-      set => onGunEmpty = value;
-      get => onGunEmpty;  
+        set => onGunEmpty = value;
+        get => onGunEmpty;
     }
 public void GrabGun (Transform gunPosition, Text bulletsText)
 {
     ammoText = bulletsText;
-nextFireTime = 0f;
-totalBullets = gunData.totalBullets;
+    nextFireTime = 0f;
+    totalBullets = gunData.totalBullets;
 transform.SetParent(gunPosition);
 transform.localPosition = Vector3.zero;
 transform.localRotation = Quaternion.identity;
@@ -37,30 +37,30 @@ rotateScript.canRotate = false;
 gameObject.GetComponent<Collider>().enabled = false;
 ChargeGun(false);
 }
-public void ChargeGun(bool playAnimation = true)
+public void ChargeGun(bool playAnimation=true)
     {
-        if (totalBullets <= 0 || cartridgeBullets == gunData.cartridgeSize) return;
+        if (totalBullets<=0 || cartrigeBullets == gunData.cartridgeSize) return;
         SoundManager.instance.Play(gunData.reloadSoundName);
-        cartridgeBullets = Mathf.Min(gunData.cartridgeSize, totalBullets);
-        totalBullets -= cartridgeBullets;
-        if (playAnimation) animator.Play("Charge", 0, 0f);
+        cartrigeBullets = Mathf.Min(gunData.cartridgeSize, totalBullets);
+        totalBullets -= cartrigeBullets;
+        if (playAnimation)animator.Play("Charge", 0, 0f);
         UpdateAmmoText();
     }
-    private void UpdateAmmoText()
+private void UpdateAmmoText()
     {
-        ammoText.text = $"{cartridgeBullets} / {totalBullets}";
+        ammoText.text = $"{cartrigeBullets}/{totalBullets}";
     }
-    private void DamageEnemy(GameObject enemy)
+private void DamageEnemy(GameObject enemy)
     {
         if (enemy.CompareTag("Enemy"))
         {
             enemy.GetComponent<Health>().TakeDamage(gunData.damage);
         }
     }
-    public void Shoot()
+public void Shoot()
     {
         float rayDistance = 1000f;
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f,0.5f,0));
         Vector3 targetPoint;
         if (Physics.Raycast(ray, out RaycastHit hit, rayDistance))
         {
@@ -73,21 +73,25 @@ public void ChargeGun(bool playAnimation = true)
         }
         Vector3 direction = (targetPoint - transform.position).normalized;
         bulletPivot.forward = direction;
-        GameObject bullet = Instantiate(bulletPrefab, bulletPivot.position, bulletPivot.rotation);
+        GameObject bullet = PoolManager.Instance.GetObject(bulletPrefab, bulletPivot.position);
+        bullet.SetActive(false);
+        bullet.transform.position = bulletPivot.position;
         bullet.transform.LookAt(targetPoint);
+        bullet.SetActive(true);
         SoundManager.instance.Play(gunData.shootSoundName);
         animator.Play("Shoot", 0, 0f);
     }
+ 
     public void HandleFire(bool pressed, bool held)
     {
-        if (gunData.gunType == GunType.Automatic)
+        if(gunData.gunType == GunType.Automatic)
         {
             if (held)
             {
                 TryShoot();
             }
         }
-        else if (gunData.gunType == GunType.SemiAutomatic)
+       else if(gunData.gunType == GunType.SemiAutomatic)
         {
             if (pressed)
             {
@@ -95,17 +99,19 @@ public void ChargeGun(bool playAnimation = true)
             }
         }
     }
+ 
     private void TryShoot()
     {
-        if (totalBullets <= 0 && cartridgeBullets <= 0)
+        if(totalBullets <= 0 && cartrigeBullets <= 0)
         {
+            SoundManager.instance.Play(gunData.dropSoundName);
             onGunEmpty?.Invoke();
             return;
         }
-        if (cartridgeBullets > 0 && Time.time >= nextFireTime)
+        if(cartrigeBullets > 0 && Time.time >= nextFireTime)
         {
             Shoot();
-            cartridgeBullets--;
+            cartrigeBullets--;
             UpdateAmmoText();
             nextFireTime = Time.time + 1f / gunData.fireRate;
         }
