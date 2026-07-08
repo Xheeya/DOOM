@@ -17,7 +17,8 @@ public class Health : MonoBehaviour
   private float currentHealth;
   public float CurrentHealth => currentHealth;
   public float MaxHealth => maxHealth;
-   public void InitializeHealth()
+  public bool IsDead => currentHealth <= 0f;
+  public void InitializeHealth()
     {
         currentHealth = maxHealth;
         UpdateHealthBar();

@@ -12,14 +12,31 @@ protected Health health;
 protected Transform player;
 private UnityEvent onDie = new UnityEvent();
 public UnityEvent OnDie => onDie;
+protected bool didWin = false;
+protected Health playerHealth;
 private void Awake()
     {
         health = GetComponent<Health>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerHealth = player.GetComponent<Health>();
+    }
+    protected bool CheckWin()
+    {
+        if (playerHealth.IsDead && !didWin)
+        {
+            didWin = true;
+            Dance();
+        }
+        return playerHealth.IsDead;
     }
     public virtual void OnEnable()
     {
         health.InitializeHealth();
+        didWin = false;
+    }
+    public virtual void Dance()
+    {
+        animator.Play("Dance", 0, 0f);
     }
     public virtual void TakeDamage()
     {
@@ -39,4 +56,4 @@ private void Awake()
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         gameObject.SetActive(false);
     }
-    }
+}
