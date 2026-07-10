@@ -730,6 +730,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cacodemon
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 78c9ec848a1cc0b479215b478436f358, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342166167476624263, guid: 78c9ec848a1cc0b479215b478436f358, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
