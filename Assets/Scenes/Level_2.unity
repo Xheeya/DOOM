@@ -5628,7 +5628,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Menu
+          m_StringArgument: "Men\xFA"
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &847464786
@@ -6257,6 +6257,8 @@ MonoBehaviour:
     spawnPoint: {fileID: 1141366768}
   - enemyPrefab: {fileID: 8574020330390631075, guid: 8dd29c8adbf03a74783b412e56c662a4, type: 3}
     spawnPoint: {fileID: 1071080279}
+  - enemyPrefab: {fileID: 4072355685758392029, guid: 3e016e72b335259459b6535625ecf5f4, type: 3}
+    spawnPoint: {fileID: 1744141213}
   onEnemiesSpawned:
     m_PersistentCalls:
       m_Calls:
@@ -12100,6 +12102,37 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 267245152}
   m_SourcePrefab: {fileID: 100100000, guid: 12f88cec2773c094eb26cc06b54a24b2, type: 3}
+--- !u!1 &1744141212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1744141213}
+  m_Layer: 0
+  m_Name: EnemySpawnPosition (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1744141213
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744141212}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 23.64, y: 2.13, z: -19.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1755029003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14876,6 +14909,7 @@ SceneRoots:
   - {fileID: 919863496}
   - {fileID: 1141366768}
   - {fileID: 1071080279}
+  - {fileID: 1744141213}
   - {fileID: 1713408018}
   - {fileID: 517614105}
   - {fileID: 931420820}
