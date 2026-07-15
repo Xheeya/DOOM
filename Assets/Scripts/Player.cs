@@ -17,9 +17,11 @@ public class Player : MonoBehaviour
     private Health health;
     private Rigidbody rb;
     public float CurrentHealth => health.CurrentHealth;
+    private FirstPersonMovement firstPersonMovement;
     private Gun currentGun;
     private void Awake() 
-    {      
+    { 
+     firstPersonMovement = GetComponent<FirstPersonMovement>();     
      rb = GetComponent<Rigidbody>();
      health = GetComponent<Health>();
     }
@@ -59,7 +61,7 @@ public class Player : MonoBehaviour
     public void PushBack(Transform enemy, float force)
     {
         Vector3 pushDirection = (transform.position - enemy.position).normalized;
-        rb.AddForce(pushDirection * force, ForceMode.Impulse);
+        firstPersonMovement.AddKnockback(pushDirection, force);
     }
     public void Die()
     {

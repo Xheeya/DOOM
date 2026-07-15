@@ -343,7 +343,7 @@ MonoBehaviour:
   damage: 20
   speed: 2.5
   yPosition: 2
-  pushForce: 200
+  pushForce: 10
 --- !u!65 &2106013091838813840
 BoxCollider:
   m_ObjectHideFlags: 0
