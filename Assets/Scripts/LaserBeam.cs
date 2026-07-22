@@ -4,7 +4,6 @@ public class LaserBeam : MonoBehaviour
 {
     [SerializeField]
     private Transform startPoint;
-    [SerializeField]
     private Transform target;
     public Transform Target { set { target = value; } }
     [SerializeField]
@@ -15,14 +14,14 @@ public class LaserBeam : MonoBehaviour
     private bool isActive = false;
     private void Awake()
     {
-        SetActive(false);
+        ActivateLaser(false);
     }
     private void LateUpdate()
     {
         if (!isActive || !followTarget) return;
         UpdateLaser();
     }
-    public void SetActive(bool active)
+    public void ActivateLaser(bool active)
     {
         isActive = active;
         laserMesh.gameObject.SetActive(active);

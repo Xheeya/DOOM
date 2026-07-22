@@ -307,9 +307,10 @@ GameObject:
   - component: {fileID: 3829436167940744294}
   - component: {fileID: 5183745089606302784}
   - component: {fileID: 5909079473171942731}
+  - component: {fileID: 887579492506157652}
   m_Layer: 0
   m_Name: Sniper
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,11 +348,10 @@ MonoBehaviour:
   animator: {fileID: 8694540849917616265}
   damage: 50
   range: 10
-  fireRate: 12
+  fireRate: 3
   aimTime: 4
   timerText: {fileID: 5109833206113741390}
-  laserBeam: {fileID: 1325697453585625447}
-  nextFireTime: 0
+  laserBeam: {fileID: 887579492506157652}
 --- !u!114 &3829436167940744294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,6 +435,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &887579492506157652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5533467845155653635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c675ba502d942c43879865b2c848ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LaserBeam
+  startPoint: {fileID: 4248451936981558520}
+  laserMesh: {fileID: 454771373117236366}
+  radius: 0.1
 --- !u!1 &6255377387014643946
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +678,6 @@ GameObject:
   - component: {fileID: 454771373117236366}
   - component: {fileID: 3880477224311526086}
   - component: {fileID: 2972571705338248325}
-  - component: {fileID: 1325697453585625447}
   m_Layer: 0
   m_Name: EnemyLaser
   m_TagString: Untagged
@@ -743,22 +757,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1325697453585625447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7704380708344831377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c675ba502d942c43879865b2c848ac2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LaserBeam
-  startPoint: {fileID: 4248451936981558520}
-  target: {fileID: 0}
-  laserMesh: {fileID: 454771373117236366}
-  radius: 0.1
 --- !u!1 &8251083933102300766
 GameObject:
   m_ObjectHideFlags: 0

@@ -28419,7 +28419,7 @@ MonoBehaviour:
     spawnPoint: {fileID: 1333198829}
   - enemyPrefab: {fileID: 2916851702162381099, guid: 2de116cedcc5b4d49948a9874361b876, type: 3}
     spawnPoint: {fileID: 1599539267}
-  - enemyPrefab: {fileID: 4077902037986569360, guid: e09682b6813d29f42b246a183142b912, type: 3}
+  - enemyPrefab: {fileID: 5533467845155653635, guid: 84fefb9c87e03fa4f98e82a43b631ffd, type: 3}
     spawnPoint: {fileID: 731871954}
   onEnemiesSpawned:
     m_PersistentCalls:
