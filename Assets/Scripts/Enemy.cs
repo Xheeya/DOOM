@@ -24,6 +24,7 @@ private void Awake()
     {
         if (playerHealth.IsDead && !didWin)
         {
+            StopAllCoroutines();
             didWin = true;
             Dance();
         }
