@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
         foreach (var spawn in enemySpawns)
         {
             Enemy enemy = Instantiate(spawn.enemyPrefab, spawn.spawnPoint.position,
-                spawn.spawnPoint.rotation).GetComponent<Enemy>();
+            spawn.spawnPoint.rotation).GetComponent<Enemy>();
             enemy.OnDie.AddListener(OnEnemyDied);
         }
         onEnemiesSpawned?.Invoke();

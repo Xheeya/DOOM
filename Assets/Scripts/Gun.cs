@@ -15,6 +15,8 @@ private GunData gunData;
 private Transform bulletPivot;
 [SerializeField]
 private GameObject bulletPrefab;
+[SerializeField]
+private GameObject fireParticlesPrefab;
 private Text ammoText;
 private float nextFireTime;
 private int totalBullets;
@@ -30,14 +32,15 @@ public void GrabGun (Transform gunPosition, Text bulletsText)
     ammoText = bulletsText;
     nextFireTime = 0f;
     totalBullets = gunData.totalBullets;
-transform.SetParent(gunPosition);
-transform.localPosition = Vector3.zero;
-transform.localRotation = Quaternion.identity;
-animator. Play ("Idle", 0, 0f);
-rotateScript.canRotate = false;
-gameObject.GetComponent<Collider>().enabled = false;
-ChargeGun(false);
+    transform.SetParent(gunPosition);
+    transform.localPosition = Vector3.zero;
+    transform.localRotation = Quaternion.identity;
+    animator. Play ("Idle", 0, 0f);
+    rotateScript.canRotate = false;
+    gameObject.GetComponent<Collider>().enabled = false;
+    ChargeGun(false);
 }
+
 public void ChargeGun(bool playAnimation=true)
     {
         if (totalBullets<=0 || cartridgeBullets == gunData.cartridgeSize) return;
@@ -77,6 +80,7 @@ private void DamageEnemy(GameObject enemy)
     }
 public void Shoot()
     {
+        PoolManager.Instance.GetObject(fireParticlesPrefab, bulletPivot.position);
         float rayDistance = 1000f;
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f,0.5f,0));
         Vector3 targetPoint;

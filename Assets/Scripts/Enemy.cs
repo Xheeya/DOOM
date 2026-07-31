@@ -13,9 +13,11 @@ protected Transform player;
 private UnityEvent onDie = new UnityEvent();
 public UnityEvent OnDie => onDie;
 protected bool didWin = false;
+protected Rigidbody rb;
 protected Health playerHealth;
 private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         health = GetComponent<Health>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerHealth = player.GetComponent<Health>();
