@@ -11,6 +11,7 @@ private Animator animator;
 private Rotate rotateScript;
 [SerializeField]
 private GunData gunData;
+public GunData GunData => gunData;
 [SerializeField]
 private Transform bulletPivot;
 [SerializeField]
@@ -22,26 +23,35 @@ private float nextFireTime;
 private int totalBullets;
 private int cartridgeBullets;
 private UnityEvent onGunEmpty = new UnityEvent();
+public bool IsGunFull => totalBullets == gunData.totalBullets;
 public UnityEvent OnGunEmpty
     {
         set => onGunEmpty = value;
         get => onGunEmpty;
     }
-public void GrabGun (Transform gunPosition, Text bulletsText)
-{
-    ammoText = bulletsText;
-    nextFireTime = 0f;
-    totalBullets = gunData.totalBullets;
-    transform.SetParent(gunPosition);
-    transform.localPosition = Vector3.zero;
-    transform.localRotation = Quaternion.identity;
-    animator. Play ("Idle", 0, 0f);
-    rotateScript.canRotate = false;
-    gameObject.GetComponent<Collider>().enabled = false;
-    ChargeGun(false);
-}
+    public void ChargeTotalBullets()
+    {
+        totalBullets = gunData.totalBullets;
+    }
+    public void GrabGun (Transform gunPosition, Text bulletsText, bool isNew = true)
+    {
+        ammoText = bulletsText;
+        nextFireTime = 0f;
+        if (isNew)
+        {
+            totalBullets = gunData.totalBullets;
+            ChargeGun(false);
+        }
+        transform.SetParent(gunPosition);
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+        animator. Play ("Grab", 0, 0f);
+        rotateScript.canRotate = false;
+        gameObject.GetComponent<Collider>().enabled = false;
+        UpdateAmmoText();
+    }
 
-public void ChargeGun(bool playAnimation=true)
+    public void ChargeGun(bool playAnimation=true)
     {
         if (totalBullets<=0 || cartridgeBullets == gunData.cartridgeSize) return;
         SoundManager.instance.Play(gunData.reloadSoundName);
@@ -54,7 +64,7 @@ public void ChargeGun(bool playAnimation=true)
             AddBullets();
         }
     }
-private IEnumerator ChargeGunCoroutine()
+    private IEnumerator ChargeGunCoroutine()
     {
         animator.Play("Charge", 0, 0f);
         yield return null;
@@ -67,18 +77,18 @@ private IEnumerator ChargeGunCoroutine()
         totalBullets -= cartridgeBullets;
         UpdateAmmoText();
     }
-private void UpdateAmmoText()
+    private void UpdateAmmoText()
     {
         ammoText.text = $"{cartridgeBullets}/{totalBullets}";
     }
-private void DamageEnemy(GameObject enemy)
+    private void DamageEnemy(GameObject enemy)
     {
         if (enemy.CompareTag("Enemy"))
         {
             enemy.GetComponent<Health>().TakeDamage(gunData.damage);
         }
     }
-public void Shoot()
+    public void Shoot()
     {
         PoolManager.Instance.GetObject(fireParticlesPrefab, bulletPivot.position);
         float rayDistance = 1000f;
