@@ -21,4 +21,4 @@ MonoBehaviour:
   shootSoundName: Shoot
   reloadSoundName: Reload
   dropSoundName: Drop
-  sprite: {fileID: 21300000, guid: 5c325b96febd45648ae932a36841c265, type: 3}
+  sprite: {fileID: 21300000, guid: 7b23d87d484f66f46bdd470a5c15b837, type: 3}

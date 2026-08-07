@@ -14,6 +14,10 @@ public class GunManager : MonoBehaviour
     [SerializeField]
     private Text ammoText;
     [SerializeField]
+    private Image gunIcon;
+    [SerializeField]
+    private Scope scope;
+    [SerializeField]
     private InputManager inputManager;
     private Gun currentGun;
     private List<Gun> guns = new List<Gun>();
@@ -41,8 +45,10 @@ public class GunManager : MonoBehaviour
         currentGun = gun;
         currentGun.GrabGun(gunPosition, ammoText);
         currentGun.OnGunEmpty.AddListener(DropGun);
+        currentGun.OnGunShoot.AddListener(scope.PlayFireAnimation);
         onGunGrabbed?.Invoke();
         currentGunIndex = guns.IndexOf(currentGun);
+        SetIcon(currentGun.GunData.sprite);
     }
     public void SwitchUpGun()
     {
@@ -66,9 +72,19 @@ public class GunManager : MonoBehaviour
     {
         if (guns.Count <= 1) return;
         currentGun.gameObject.SetActive(false);
+        SetGun();
+    }
+    public void SetGun()
+    {
         currentGun = guns[currentGunIndex];
         currentGun.gameObject.SetActive(true);
         currentGun.GrabGun(gunPosition, ammoText, false);
+        gunIcon.sprite = currentGun.GunData.sprite;
+    }
+    public void SetIcon(Sprite sprite)
+    {
+        gunIcon.sprite = sprite;
+        gunIcon.SetNativeSize();
     }
     public void DropAllGuns()
     {
@@ -83,14 +99,13 @@ public class GunManager : MonoBehaviour
     public void DropGun()
     {
         currentGun.OnGunEmpty.RemoveListener(DropGun);
+        currentGun.OnGunShoot.RemoveListener(scope.PlayFireAnimation);
         guns.Remove(currentGun);
         Destroy(currentGun.gameObject);
         if (guns.Count > 0)
         {
             currentGunIndex = guns.Count - 1;
-            currentGun = guns[currentGunIndex];
-            currentGun.gameObject.SetActive(true);
-            currentGun.GrabGun(gunPosition, ammoText, false);
+            SetGun();
         }
         else
         {
@@ -106,6 +121,14 @@ public class GunManager : MonoBehaviour
         if (inputManager.RightButtonPressed)
         {
             currentGun.ChargeGun();
+        }
+        if (currentGun.IsAimingEnemy())
+        {
+            scope.ChangeToAimingColor();
+        }
+        else
+        {
+            scope.ChangeToIdleColor();
         }
     }
 }

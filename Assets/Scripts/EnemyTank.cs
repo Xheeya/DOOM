@@ -20,7 +20,7 @@ public class EnemyTank : Enemy
     {
         base.OnEnable();
         nextFireTime = 0f;
-        animator.Play("Appear", 1, 0f);
+        animator.Play("Appear", 0, 0f);
         SoundManager.instance.Play("MancubusAppear");
         transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
     }

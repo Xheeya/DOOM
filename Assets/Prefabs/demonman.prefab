@@ -543,6 +543,10 @@ PrefabInstance:
       value: demonman
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f1b148f6d98aff54688b765b5d0c6af1, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b148f6d98aff54688b765b5d0c6af1, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}

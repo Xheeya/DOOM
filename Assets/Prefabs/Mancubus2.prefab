@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 5231085858515487684}
   - component: {fileID: 3776281416012334027}
   - component: {fileID: 4116747225927454593}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Mancubus2
   m_TagString: Enemy
   m_Icon: {fileID: 0}

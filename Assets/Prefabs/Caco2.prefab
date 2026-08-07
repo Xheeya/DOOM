@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 1401868034425098283}
   - component: {fileID: 641966218052084788}
   - component: {fileID: 8103026513349549763}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Caco2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
