@@ -47,6 +47,7 @@ private void Awake()
     }
     public virtual void Die()
     {
+        rb.isKinematic = true;
         GetComponent<Collider>().enabled = false;
         onDie?.Invoke();
         StopAllCoroutines();

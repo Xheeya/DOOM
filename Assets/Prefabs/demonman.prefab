@@ -538,6 +538,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1018664272722485354, guid: f1b148f6d98aff54688b765b5d0c6af1, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f1b148f6d98aff54688b765b5d0c6af1, type: 3}
       propertyPath: m_Name
       value: demonman
@@ -573,6 +577,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1b148f6d98aff54688b765b5d0c6af1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4737770474341490377}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1b148f6d98aff54688b765b5d0c6af1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7520630908354657013}
     - targetCorrespondingSourceObject: {fileID: -1018664272722485354, guid: f1b148f6d98aff54688b765b5d0c6af1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7813039836708413793}
@@ -694,6 +701,33 @@ MonoBehaviour:
   onHeal:
     m_PersistentCalls:
       m_Calls: []
+--- !u!54 &7520630908354657013
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574020330390631075}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &9058668204231583769 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f1b148f6d98aff54688b765b5d0c6af1, type: 3}
